@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/shubham1910200/Todo-App_CI_CD.git'
+                git 'https://github.com/shubham1910200/Node-todo-CI_CD.git'
             }
         }
 
