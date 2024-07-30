@@ -11,6 +11,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    echo 'Building Docker Image ...'
                     dockerImage = docker.build("soma1999/todo-app-node:latest")
                 }
             }
