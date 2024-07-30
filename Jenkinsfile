@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
+                echo 'Checking out the repository...'
                 git 'https://github.com/shubham1910200/Node-todo-CI_CD.git'
             }
         }
@@ -11,7 +12,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    echo 'Building Docker Image ...'
+                    echo 'Building Docker image...'
                     dockerImage = docker.build("soma1999/todo-app-node:latest")
                 }
             }
@@ -20,6 +21,7 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
+                    echo 'Running Docker container...'
                     dockerImage.run("-d -p 8000:8000 --name todoapp-container")
                 }
             }
@@ -28,6 +30,7 @@ pipeline {
         stage('Verify Application') {
             steps {
                 script {
+                    echo 'Verifying application...'
                     // Wait for the application to start
                     sleep(10)
 
@@ -41,6 +44,7 @@ pipeline {
     post {
         always {
             script {
+                echo 'Cleaning up Docker container...'
                 // Clean up Docker container
                 sh 'docker rm -f todoapp-container || true'
             }
