@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: node-container
-          image: trainwithshubham/node-app-batch-6
+          image: soma1999/node-app-image
           ports:
             - containerPort: 8000
           resources:
